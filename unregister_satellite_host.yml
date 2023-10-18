@@ -1,0 +1,12 @@
+---
+- name: Unregister a Content Host in Red Hat Satellite
+  hosts: satellite_server
+  tasks:
+    - name: Unregister the Content Host
+      community.katello.katello_host:
+        username: your_username
+        password: your_passwords
+        server_url: https://your_satellite_server
+        name: content_host_name_to_unregister
+        state: absent
+      delegate_to: localhost
