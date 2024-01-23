@@ -1,0 +1,24 @@
+name: rhel_partition_blueprint
+version: 0.1.0
+description: RHEL Blueprint with Customized Partitions
+
+modules:
+  - name: rhel-server
+    version: 9.0
+    release: 0.1
+    packages:
+      - vim
+      - wget
+      - net-tools
+      - bash
+    partitions:
+      - name: /      # Root partition
+        size: 10GB
+      - name: /home  # Home partition
+        size: 5GB
+      - name: /var   # Var partition
+        size: 8GB
+
+customizations:
+  scripts:
+    - "echo 'Hello, this is a custom script!' > /root/custom_script.txt"
